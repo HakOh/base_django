@@ -5,5 +5,5 @@
 - gunicorn
 
 # docker 
-> docker-compose up -d --build(127.0.0.1:8001)
-> docker-compose down
+docker-compose up -d --build(127.0.0.1:8001)
+docker-compose down
