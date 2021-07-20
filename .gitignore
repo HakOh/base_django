@@ -1,2 +1,6 @@
 app/base_django/secrets.json
 __pycache__
+db.sqlite3
+/static
+/media
+.vscode
