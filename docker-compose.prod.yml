@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
+    command: gunicorn base_django.wsgi.prod:application --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=base_django.settings.prod
+    volumes:
+      - static_volume:/usr/src/app/static
+    expose:
+      - 8000
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/usr/src/app/static
+    ports:
+      - 8001:80
+    depends_on:
+      - web
+
+volumes:
+  static_volume:
